@@ -539,7 +539,9 @@ Safety: Ensure that safety checks are in place before implementing this system i
 
 
 __________________________________________________________________________________________________________________________________________________________________
-Citations and Acknowledgements
+
+                                                          Citations and Acknowledgements
+
 __________________________________________________________________________________________________________________________________________________________________
 
 Universal Autonomous Driving System: Innovation with YOLO11++-based Universal Autonomous Expert System Publication
