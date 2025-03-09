@@ -623,11 +623,11 @@ This architecture forms the foundation of a UAES for autonomous driving that ada
 Safety: Ensure that safety checks are in place before implementing this system in a real-world autonomous vehicle.
 
 
-__________________________________________________________________________________________________________________________________________________________________
+________________________________________________________________________________________________________________________
 
                                                           Citations and Acknowledgements
 
-__________________________________________________________________________________________________________________________________________________________________
+________________________________________________________________________________________________________________________
 
 Universal Autonomous Driving System: Innovation with YOLO11++-based Universal Autonomous Expert System Publication
 
