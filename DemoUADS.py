@@ -15,74 +15,64 @@ from collections import deque
 #Create a concatenation of 3 different models results
 
 model = YOLO("yolo11n.yaml")
-# Charger les modèles YOLO
 model1 = YOLO("yolov8sign.pt")  # detect all sign 
 model = model1
 model2 = YOLO("yolov8nbt.pt")  # detect traffic Light red green yellow
 model = model2
-model31 = YOLO("bestBT100.pt")  # detect cars bus trained on Coco Dataset 319 layers, 2624080 parameters, 2624064 gradients
-model = model31
-model32 = YOLO("yolo11n.pt")  # detect cars bus trained on Coco Dataset 319 layers, 2624080 parameters, 2624064 gradients
-model = model32
-model34 = YOLO("bestAW100.pt")  # detect cars bus trained on Coco Dataset 319 layers, 2624080 parameters, 2624064 gradients
-model = model34
-model33 = YOLO("yolov9t.pt")  # detect cars bus trained on Coco Dataset 319 layers, 2624080 parameters, 2624064 gradients
-model = model33
-#model35 = YOLO("bestCOCO128100.pt")  # detect cars bus trained on Coco Dataset 319 layers, 2624080 parameters, 2624064 gradients
-#model = model3
-#model = model35
+model3 = YOLO("yolo11++CC128.pt")  # detect cars bus trained on Coco Dataset 319 layers, 2624080 parameters, 2624064 gradients
+model = model3
 
 ###################################################################################################################################
 
-# Extraire les boîtes englobantes, les scores et les classes
-    #boxes1 = results1.xyxy[0][:, :4].cpu().numpy()
-    #scores1 = results1.xyxy[0][:, 4].cpu().numpy()
-    #classes1 = results1.xyxy[0][:, 5].cpu().numpy()
+# Extract boxes, scores and classes
+    boxes1 = results1.xyxy[0][:, :4].cpu().numpy()
+    scores1 = results1.xyxy[0][:, 4].cpu().numpy()
+    classes1 = results1.xyxy[0][:, 5].cpu().numpy()
 
-    #boxes2 = results2.xyxy[0][:, :4].cpu().numpy()
-    #scores2 = results2.xyxy[0][:, 4].cpu().numpy()
-    #classes2 = results2.xyxy[0][:, 5].cpu().numpy()
+    boxes2 = results2.xyxy[0][:, :4].cpu().numpy()
+    scores2 = results2.xyxy[0][:, 4].cpu().numpy()
+    classes2 = results2.xyxy[0][:, 5].cpu().numpy()
 
-    #boxes3 = results3.xyxy[0][:, :4].cpu().numpy()
-    #scores3 = results3.xyxy[0][:, 4].cpu().numpy()
-    #classes3 = results3.xyxy[0][:, 5].cpu().numpy()
+    boxes3 = results3.xyxy[0][:, :4].cpu().numpy()
+    scores3 = results3.xyxy[0][:, 4].cpu().numpy()
+    classes3 = results3.xyxy[0][:, 5].cpu().numpy()
 
-    # Combiner les boîtes, les scores et les classes
-    #all_boxes = np.concatenate([boxes1, boxes2, boxes3])
-    #all_scores = np.concatenate([scores1, scores2, scores3])
-    #all_classes = np.concatenate([classes1, classes2, classes3])
+    # Combine boxes, scores and classes
+    all_boxes = np.concatenate([boxes1, boxes2, boxes3])
+    all_scores = np.concatenate([scores1, scores2, scores3])
+    all_classes = np.concatenate([classes1, classes2, classes3])
 
-    # Appliquer NMS pour supprimer les boîtes redondantes
-    #keep_indices = nms(torch.tensor(all_boxes), torch.tensor(all_scores), iou_threshold=0.5)
-    #final_boxes = all_boxes[keep_indices]
-    #final_scores = all_scores[keep_indices]
-    #final_classes = all_classes[keep_indices]
+    # delete redondantes
+    keep_indices = nms(torch.tensor(all_boxes), torch.tensor(all_scores), iou_threshold=0.5)
+    final_boxes = all_boxes[keep_indices]
+    final_scores = all_scores[keep_indices]
+    final_classes = all_classes[keep_indices]
 
-    #return final_boxes, final_scores, final_classes
+    return final_boxes, final_scores, final_classes
 
 ###################################################################################################################################
 
 x1=1000
-# Ouvrir la vidéo
+# Open video
 video_path = "VIDS/VIDS13.mp4"
 cap = cv2.VideoCapture(video_path)
 
-# Paramètres pour la détection de vitesse
+# Detect speed demo
 fps = cap.get(cv2.CAP_PROP_FPS)
 frame_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
 frame_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
 output_video = cv2.VideoWriter('VIDS/VIDSVDMD13.mp4', cv2.VideoWriter_fourcc(*'mp4v'), fps, (frame_width, frame_height))
 
-# Dictionnaire pour stocker les positions précédentes des voitures
+# traked objects
 tracked_objects = {}
 
-# Fonction pour calculer la vitesse
+# Compute speed demo
 def calculate_speed(prev_position, current_position, fps):
     distance = np.linalg.norm(np.array(current_position) - np.array(prev_position))
     speed = distance * fps  # en pixels par seconde
     return speed
 
-# Fonction pour lire les panneaux de signalisation (simplifié)
+# Read traffic Signs (simplified)
 def read_traffic_signs(frame):
     # Ici, vous pouvez ajouter un modèle de détection de panneaux de signalisation
     # Pour cet exemple, nous allons simplement retourner un panneau fictif
@@ -112,7 +102,7 @@ def read_traffic_signs(frame):
              #cv2.putText(frame, f"                               id :{int(box.cls)}", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
     
 
-# Fonction pour afficher des recommandations (simplifié)
+# Demo display recommendations (simplified)
 def display_recommendations(frame, sign):
     if sign == "Go":
         cv2.putText(frame, "Recommendation: Green Go", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
@@ -121,7 +111,7 @@ def display_recommendations(frame, sign):
     #else :
         #cv2.putText(frame, "Recommendation: Keep Line", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
 
-# Boucle de traitement de la vidéo
+# Demo video treatement
 while cap.isOpened():
     ret, frame = cap.read()
     if not ret:
@@ -135,16 +125,16 @@ while cap.isOpened():
     for r in results2:
         frame = r.plot()
 
-    results34 = model34(frame)
-    # Traitement des résultats
-    for result in results34:
+    results3 = model3(frame)
+    # Demo resultats treatement
+    for result in results3:
         for box in result.boxes:
             class_id = int(box.cls)
             if class_id == 2:  # Class ID 2 correspond aux voitures dans YOLO
                 x1, y1, x2, y2 = map(int, box.xyxy[0])
                 object_id = f"{x1}_{y1}_{x2}_{y2}"
 
-                # Calcul de la vitesse
+                # Demo compute speed (simplified)
                 if object_id in tracked_objects:
                     prev_position = tracked_objects[object_id]
                     current_position = ((x1 + x2) // 2, (y1 + y2) // 2)
@@ -155,37 +145,26 @@ while cap.isOpened():
                 # Dessiner la boîte autour de la voiture
                 cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
 
-    # Lecture des panneaux de signalisation
+    # Read_traffic_signs
     sign = read_traffic_signs(frame)
 
-    # Affichage des recommandations
+    # display_recommendations
     display_recommendations(frame, sign)
 
-    # Enregistrement de la frame dans la vidéo de sortie
+    # Output Video
     output_video.write(frame)
 
-    # Affichage de la frame (optionnel)
+    # Display frame (optionnel)
     cv2.imshow("Frame", frame)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
-# Libération des ressources
+# Free ressources
 cap.release()
 output_video.release()
 cv2.destroyAllWindows()
 
 
-#results = model.train(data="signature.yaml", epochs=100, imgsz=640)
-#results = model.train(data="african-wildlife.yaml", epochs=100, imgsz=640)
-#results = model.train(data="brain-tumor.yaml", epochs=30, imgsz=640)
-#results = model.train(data="coco8.yaml", epochs=20)
-results = model.train(data="/media/maher/UBUNTU/home/maher/Documents/DataSet_and_download/datasets/coco/coco128.yaml", epochs=100, imgsz=640)#20 Go
-#results = model.train(data="Argoverse.yaml", epochs=100, imgsz=640)
-#results = model.train(data="imagenet10.yaml", epochs=100, imgsz=640)
-#results = model.train(data="Argoverse.yaml", epochs=100, imgsz=640)
-#results = model.train(data="/media/maher/UBUNTU/home/maher/Documents/DataSet_and_download/datasets/VisDrone.yaml", epochs=100, imgsz=640)#2.4Go
-#results = model.train(data="VOC.yaml", epochs=100, imgsz=640)#2.8 Go probleme de filtres à l'isi
-#results = model.train(data="VOC.yaml", epochs=100, imgsz=640)
 
 
 
