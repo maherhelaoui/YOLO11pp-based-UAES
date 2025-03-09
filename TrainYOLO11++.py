@@ -29,17 +29,22 @@ from collections import deque
 
 model = YOLO("yolo11n.yaml")
 # Charger les modèles YOLO
-model3 = YOLO("yolo11++CC128.pt")  # detect cars bus trained on Coco Dataset 319 layers, 2624080 parameters, 2624064 gradients
+#model3 = YOLO("yolo11++MP.pt")  # if model.train(data="medical-pills.yaml", epochs=100)
+#model3 = YOLO("yolo11++GW.pt")  # if model.train(data="GlobalWheat2020.yaml", epochs=100)
+#model3 = YOLO("yolo11++S.pt")  # if model.train(data="signature.yaml", epochs=100)
+#model3 = YOLO("yolo11++AW.pt")  # if model.train(data="african-wildlife.yaml", epochs=100)
+#model3 = YOLO("yolo11++BT.pt")  # if model.train(data="brain-tumor.yaml", epochs=100)
+model3 = YOLO("yolo11++CC128.pt")  # if model.train(data="coco128.yaml", epochs=100)
 model = model3
 
 
 
-#results = model.train(data="medical-pills.yaml", epochs=100, imgsz=640) # Train MP Dataset
-#results = model.train(data="GlobalWheat2020.yaml", epochs=100, imgsz=640) # Train GW Dataset
-#results = model.train(data="signature.yaml", epochs=100, imgsz=640) # Train SD Dataset
-#results = model.train(data="african-wildlife.yaml", epochs=100, imgsz=640) # Train AW Dataset
-#results = model.train(data="brain-tumor.yaml", epochs=100, imgsz=640) # Train BT Dataset
-results = model.train(data="coco128.yaml", epochs=100) # Train CC128 Dataset
+#results = model.train(data="medical-pills.yaml", epochs=100, imgsz=640) # Train MP Dataset use model yolo11++MP.pt
+#results = model.train(data="GlobalWheat2020.yaml", epochs=100, imgsz=640) # Train GW Dataset use model yolo11++GW.pt
+#results = model.train(data="signature.yaml", epochs=100, imgsz=640) # Train SD Dataset use model yolo11++S.pt
+#results = model.train(data="african-wildlife.yaml", epochs=100, imgsz=640) # Train AW Dataset use model yolo11++AW.pt
+#results = model.train(data="brain-tumor.yaml", epochs=100, imgsz=640) # Train BT Dataset use model yolo11++BT.pt
+results = model.train(data="coco128.yaml", epochs=100) # Train CC128 Dataset use model yolo11++CC128.pt 
 
 
 
