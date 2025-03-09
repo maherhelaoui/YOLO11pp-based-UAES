@@ -1,5 +1,5 @@
 # Universal Autonomous Driving System: Innovation with yolo11++-based-UAES
-
+yolo11.pt is generated as decribed in the paper.
 In order to compare the proposed original Universal Autonomous Expert System using the proposed YOLO11++ detector, we present different versions of Expert System using YOLO11++. We start with Dynamic Expert System for Autonomous Driving, then we improve this version by using LLM, finally we detail our proposed Universal Autonomous Expert System (UAES). The proposed UAES Updates Facts Using Perceptron and Evaluates Decisions and Updates Rules, in real time.
 
   
@@ -532,9 +532,30 @@ Final Thoughts:
     Real-time Performance: The system uses a multi-threaded approach for parallel collective run to ensure optimal real-time processing for object detection, decision-making, and audio feedback.
     Learning and Adaptation: The perceptron dynamically updates facts based on the detected objects. As the system receives more feedback and detects more scenarios, it can adjust its rules and behaviors.
     Extendability: This setup can be further extended by introducing more complex rules, including reinforcement learning to optimize the vehicle’s decisions over time, and using advanced LLMs (e.g., GPT-4) for more nuanced decision-making.
-    
+
 This architecture forms the foundation of a UAES for autonomous driving that adapts to its environment, learns from experience, and provides audio feedback to the driver or system operator.
 
 Safety: Ensure that safety checks are in place before implementing this system in a real-world autonomous vehicle.
 
 
+__________________________________________________________________________________________________________________________________________________________________
+Citations and Acknowledgements
+__________________________________________________________________________________________________________________________________________________________________
+
+Universal Autonomous Driving System: Innovation with YOLO11++-based Universal Autonomous Expert System Publication
+
+If you use YOLO11++ or Universal Autonomous Expert System software from this repository in your work, please cite it using the following format:
+
+BibTeX
+@article{hel25YOLO11++UAES,
+  title={Universal Autonomous Driving System: Innovation with YOLO11++-based Universal Autonomous Expert System},
+  author={Maher, Helaoui and Sahbi, Bahroun and Ezzeddine, Zagrouba},
+  journal={The Visual Computer (Submited)},
+  url = {[https://github.com/ultralytics/ultralytics](https://github.com/maherhelaoui/YOLO11pp-based-UAES/)},
+  year={2025},
+  publisher={Springer}
+}
+
+
+Please note that the DOI will be added to the citation once it is available. 
+    
