@@ -1,3 +1,17 @@
+#If you use this demo or Universal Autonomous Driving System software from this repository in your work, 
+#please cite it using the following format:
+
+#BibTeX 
+#@article{hel25YOLO11++UAES, 
+#title={Universal Autonomous Driving System: Innovation with YOLO11++-based Universal Autonomous Expert System}, 
+#author={Maher, Helaoui and Sahbi, Bahroun and Ezzeddine, Zagrouba}, 
+#journal={The Visual Computer (Submitted)}, 
+#url = {https://github.com/maherhelaoui/YOLO11pp-based-UAES/}, 
+#year={2025}, publisher={Springer} }
+
+Please note that the DOI will be added to the citation once it is available.
+
+
 import os
 import shutil
 from pathlib import Path
