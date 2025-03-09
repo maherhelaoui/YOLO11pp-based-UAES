@@ -1,5 +1,31 @@
 # Universal Autonomous Driving System: Innovation with yolo11++-based-UAES
-yolo11.pt is generated as decribed in the paper.
+
+YOLO11++ needs installing
+
+pip install ultralytics  # For YOLO11++ like YOLO11
+
+Download yolo11++.pt from this repository
+
+To Train YOLO11++ on different Datasets you can use 
+
+$ python TrainYOLO11++.py
+or
+$ python3 TrainYOLO11++.py
+
+You can change the used dataset by selecting one from this list TrainYOLO11++.py
+
+results = model.train(data="medical-pills.yaml", epochs=100, imgsz=640) # Train MP Dataset
+#results = model.train(data="GlobalWheat2020.yaml", epochs=100, imgsz=640) # Train GW Dataset
+#results = model.train(data="signature.yaml", epochs=100, imgsz=640) # Train SD Dataset
+#results = model.train(data="african-wildlife.yaml", epochs=100, imgsz=640) # Train AW Dataset
+#results = model.train(data="brain-tumor.yaml", epochs=100, imgsz=640) # Train BT Dataset
+#results = model.train(data="coco128.yaml", epochs=100) # Train CC128 Dataset
+
+
+yolo11++.pt is generated as decribed in the paper.
+
+
+
 In order to compare the proposed original Universal Autonomous Expert System using the proposed YOLO11++ detector, we present different versions of Expert System using YOLO11++. We start with Dynamic Expert System for Autonomous Driving, then we improve this version by using LLM, finally we detail our proposed Universal Autonomous Expert System (UAES). The proposed UAES Updates Facts Using Perceptron and Evaluates Decisions and Updates Rules, in real time.
 
   
