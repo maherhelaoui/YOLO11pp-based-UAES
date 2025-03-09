@@ -29,17 +29,17 @@ from collections import deque
 
 model = YOLO("yolo11n.yaml")
 # Charger les modèles YOLO
-model3 = YOLO("yolo11++.pt")  # detect cars bus trained on Coco Dataset 319 layers, 2624080 parameters, 2624064 gradients
+model3 = YOLO("yolo11++CC128.pt")  # detect cars bus trained on Coco Dataset 319 layers, 2624080 parameters, 2624064 gradients
 model = model3
 
 
 
-results = model.train(data="medical-pills.yaml", epochs=100, imgsz=640) # Train MP Dataset
+#results = model.train(data="medical-pills.yaml", epochs=100, imgsz=640) # Train MP Dataset
 #results = model.train(data="GlobalWheat2020.yaml", epochs=100, imgsz=640) # Train GW Dataset
 #results = model.train(data="signature.yaml", epochs=100, imgsz=640) # Train SD Dataset
 #results = model.train(data="african-wildlife.yaml", epochs=100, imgsz=640) # Train AW Dataset
 #results = model.train(data="brain-tumor.yaml", epochs=100, imgsz=640) # Train BT Dataset
-#results = model.train(data="coco128.yaml", epochs=100) # Train CC128 Dataset
+results = model.train(data="coco128.yaml", epochs=100) # Train CC128 Dataset
 
 
 
