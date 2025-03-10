@@ -81,13 +81,14 @@ Each yolo11++ model is generated as decribed in the Visual computer journal pape
 yolo11++ achieves state-of-the-art performance with precision confidences exceeding 99% on various datasets.
 
 
+![image](https://github.com/user-attachments/assets/9cb6b3f8-1c77-4ae6-9cee-4b5765875f47)
+![image](https://github.com/user-attachments/assets/d355b5ef-e4cc-49f1-9a44-6374961166eb)
+
+
 ____________________________________________________________________________________________________________________
 
                             B. Universal Autonomous Expert System Analysis Process
 ____________________________________________________________________________________________________________________
-
-![image](https://github.com/user-attachments/assets/9cb6b3f8-1c77-4ae6-9cee-4b5765875f47)
-![image](https://github.com/user-attachments/assets/d355b5ef-e4cc-49f1-9a44-6374961166eb)
 
 
 
