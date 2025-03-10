@@ -29,15 +29,15 @@ from collections import deque
 #Create a concatenation of 3 different models results
 
 model = YOLO("yolo11n.yaml")
-model1 = YOLO("yolov8sign.pt")  # detect all sign 
+model1 = YOLO("yolov8sign.pt")  # detect all sign. You can select and use any sign detector. It must be added.  
 model = model1
-model2 = YOLO("yolov8nbt.pt")  # detect traffic Light red green yellow
+model2 = YOLO("yolov8nbt.pt")  # detect traffic Light red green yellow. You can use any traffic light detector.
 model = model2
 model3 = YOLO("yolo11++CC128.pt")  # detect cars bus trained on Coco Dataset 319 layers, 2624080 parameters, 2624064 gradients
 model = model3
 
 ###################################################################################################################################
-
+# Example concatinate multi model
 # Extract boxes, scores and classes
     boxes1 = results1.xyxy[0][:, :4].cpu().numpy()
     scores1 = results1.xyxy[0][:, 4].cpu().numpy()
