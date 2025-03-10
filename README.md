@@ -669,11 +669,11 @@ from collections import deque
 #Create a concatenation of 3 different models results
 
 model = YOLO("yolo11n.yaml")
-model1 = YOLO("yolov8sign.pt")  # detect all sign 
+model1 = YOLO("yolov8sign.pt")  # detect all sign. You can use any sign detector Model. The model chosed in this demo is mensioned in the Visual computer journal paper. It must be added to the work space. 
 model = model1
-model2 = YOLO("yolov8nbt.pt")  # detect traffic Light red green yellow
+model2 = YOLO("yolov8nbt.pt")  # detect traffic Light red green yellow. You can use any traffic Light detector Model. The model chosed in this demo is mensioned in the Visual computer journal paper. It must be added to the work space. 
 model = model2
-model3 = YOLO("yolo11++CC128.pt")  # detect cars bus trained on Coco Dataset 319 layers, 2624080 parameters, 2624064 gradients
+model3 = YOLO("yolo11++CC128.pt")  # This traned model is the most adequate to detect cars bus trained on Coco128 Dataset 
 model = model3
 
 ###################################################################################################################################
