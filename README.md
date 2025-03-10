@@ -78,12 +78,17 @@ You can change the used dataset by selecting one from this list in TrainYOLO11++
 results = model.train(data="coco128.yaml", epochs=100) # Train CC128 Dataset use model yolo11++CC128.pt 
 
 Each yolo11++ model is generated as decribed in the Visual computer journal paper.
+yolo11++ achieves state-of-the-art performance with precision confidences exceeding 99% on various datasets.
 
 
 ____________________________________________________________________________________________________________________
 
                             B. Universal Autonomous Expert System Analysis Process
 ____________________________________________________________________________________________________________________
+
+![image](https://github.com/user-attachments/assets/9cb6b3f8-1c77-4ae6-9cee-4b5765875f47)
+![image](https://github.com/user-attachments/assets/d355b5ef-e4cc-49f1-9a44-6374961166eb)
+
 
 
 
