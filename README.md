@@ -10,7 +10,7 @@ ________________________________________________________________________________
 
 YOLO11++ needs installing
 
-pip install ultralytics  # For YOLO11++ like YOLO11
+pip install ultralytics  # For YOLO11++ like YOLO11 (https://docs.ultralytics.com/quickstart/#install-ultralytics)
 _____________________________________________________________________________________________________________________
                                         
                                         Download trained models
